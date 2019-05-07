@@ -20,7 +20,7 @@ class SypexGeoServiceProvider extends ServiceProvider {
      * @return void
      */
     public function boot(){
-        $dir = __DIR__ . '/../../publish';
+        $dir = __DIR__ . '/../../publish/';
         $this->publishes([
             $dir . 'config/sypexgeo.php' => config_path('sypexgeo.php'),
             $dir . 'database/sypexgeo/SxGeoCity.dat' => database_path('sypexgeo/SxGeoCity.dat'),
