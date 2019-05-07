@@ -17,7 +17,7 @@ To get the latest version of SypexGeo simply require it in your `composer.json` 
 ~~~
 OR
 ~~~
-composer require freezon/sypexgeo:0.6.*@dev
+$ composer require freezon/sypexgeo:0.6.*@dev
 ~~~
 
 ### Publish the configurations
@@ -25,7 +25,7 @@ composer require freezon/sypexgeo:0.6.*@dev
 Run this on the command line from the root of your project:
 
 ~~~
-$ php artisan vendor:publish  --provider="Freez0n\SypexGeo\SypexGeoServiceProvider"
+$ php artisan vendor:publish --provider="Freez0n\SypexGeo\SypexGeoServiceProvider"
 ~~~
 
 A configuration file will be publish to `config/sypexgeo.php`
@@ -142,11 +142,3 @@ If data is received from the webservice - config/sypexgeo.php
               "timestamp" => 1428516249
         ];
 ```
-#### Default Location
-
-In the case that a location is not found the fallback location will be returned with the `default` parameter set to `true`. To set your own default change it in the configurations `config/geoip.php`
-
-
-
-
-
