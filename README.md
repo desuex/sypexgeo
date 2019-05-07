@@ -1,4 +1,4 @@
-# GeoIP for Laravel 5
+# GeoIP for Laravel 5.4+
 
 ----------
 
@@ -7,13 +7,13 @@ The data comes from a database and from service http://sypexgeo.net
 
 ## Installation
 
-- [SypexGeo for Laravel 5 on Packagist](https://packagist.org/packages/scriptixru/sypexgeo)
-- [SypexGeo for Laravel 5 on GitHub](https://github.com/scriptixru/sypexgeo)
+- [SypexGeo for Laravel 5.4+ on Packagist](https://packagist.org/packages/freezon/sypexgeo)
+- [SypexGeo for Laravel 5.4+ on GitHub](https://github.com/freezon/sypexgeo)
 
 To get the latest version of SypexGeo simply require it in your `composer.json` file.
 
 ~~~
-"scriptixru/sypexgeo": "0.2.*@dev"
+"freezon/sypexgeo": "0.3.*@dev"
 ~~~
 
 You'll then need to run `composer install` to download it and have the autoloader updated.
@@ -155,8 +155,6 @@ If data is received from the webservice - config/sypexgeo.php
 In the case that a location is not found the fallback location will be returned with the `default` parameter set to `true`. To set your own default change it in the configurations `config/geoip.php`
 
 ## Services
-
-### [Scriptix](http://www.scriptix.ru)
 
 - **Database Service**: To use the database version of SypexGeo services download the `SxGeoCityMax.dat` from (vendor/scriptixru/sypexgeo/scr/Scriptixru/SypexGeo) and extract it to `/database/sypexgeo/`. And that's it.
 
