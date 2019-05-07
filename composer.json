@@ -2,7 +2,7 @@
     "name": "freezon/sypexgeo",
     "description": "Supports GeoIP services (sypexgeo.net).",
     "keywords": ["laravel", "laravel 5.4", "geoip", "location", "geolocation"],
-	"license": "BSD 2-Clause",
+	"license": "BSD-2-Clause",
     "authors": [
         {
             "name": "Varchak Valery",
@@ -19,7 +19,7 @@
     },
     "extra": {
         "branch-alias": {
-            "dev-master": "v0.3-alpha"
+            "dev-master": "v0.3-dev"
         }
     }
 }
