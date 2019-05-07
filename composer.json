@@ -12,12 +12,12 @@
     },
     "autoload": {
         "psr-4": {
-          "Freez0n/SypexGeo\\": "src/Freez0n/SypexGeo"
+          "Freez0n\\SypexGeo\\": "src/Freez0n/SypexGeo"
         }
     },
     "extra": {
         "branch-alias": {
-            "dev-master": "v0.4-dev"
+            "dev-master": "v0.5-dev"
         },
         "laravel": {
             "providers": [
