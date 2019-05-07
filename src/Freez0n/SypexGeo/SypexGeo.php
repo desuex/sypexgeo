@@ -9,8 +9,8 @@ use Illuminate\Support\Facades\Facade;
  *
  * @package Freez0n\SypexGeo
  *
- * @method array get(string $ip = '')
- * @method string getIP()
+ * @method static array get(string $ip = '')
+ * @method static string getIP()
  */
 class SypexGeo extends Facade {
 
