@@ -12,7 +12,7 @@
     },
     "autoload": {
         "psr-4": {
-          "Freez0n\\SypexGeo\\": "src/Freez0n/SypexGeo"
+          "Freez0n\\SypexGeo\\": "src/Freez0n/SypexGeo/"
         }
     },
     "extra": {

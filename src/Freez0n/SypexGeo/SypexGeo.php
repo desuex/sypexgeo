@@ -1,4 +1,6 @@
-<?php namespace Freez0n\SypexGeo;
+<?php
+
+namespace Freez0n\SypexGeo;
 
 use Illuminate\Support\Facades\Facade;
 
