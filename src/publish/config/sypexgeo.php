@@ -4,17 +4,6 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Service
-    |--------------------------------------------------------------------------
-    |
-    | Current only supports 'sypexgeo'.
-    |
-    */
-
-    'service' => 'sypexgeo',
-
-    /*
-    |--------------------------------------------------------------------------
     | Services settings
     |--------------------------------------------------------------------------
     |
@@ -27,7 +16,7 @@ return [
         // database or web_service
         'path'        => '/database/sypexgeo/',
         // database path (works only with 'type' => 'database')
-        'file'        => 'SxGeoCityMax.dat',
+        'file'        => 'SxGeoCity.dat',
         // database file (works only with 'type' => 'database')
         'license_key' => '',
         //license key sypexgeo.net (works only with 'type' => 'web_service')

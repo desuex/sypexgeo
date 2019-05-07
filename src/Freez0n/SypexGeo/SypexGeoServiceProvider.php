@@ -1,6 +1,9 @@
 <?php namespace Freez0n\SypexGeo;
 
 use Illuminate\Support\ServiceProvider;
+use Freez0n\SypexGeo\Sypex\SxGeo;
+use Freez0n\SypexGeo\Sypex\SxGeoHttp;
+use Freez0n\SypexGeo\Geo\SypexGeo;
 
 class SypexGeoServiceProvider extends ServiceProvider {
 
@@ -17,8 +20,10 @@ class SypexGeoServiceProvider extends ServiceProvider {
      * @return void
      */
     public function boot(){
+        $dir = __DIR__ . '/../../publish';
         $this->publishes([
-            __DIR__ . '/../../config/sypexgeo.php' => config_path('sypexgeo.php'),
+            $dir . 'config/sypexgeo.php' => config_path('sypexgeo.php'),
+            $dir . 'database/sypexgeo/SxGeoCity.dat' => database_path('sypexgeo/SxGeoCity.dat'),
         ]);
     }
 

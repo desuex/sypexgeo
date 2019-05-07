@@ -7,35 +7,17 @@ The data comes from a database and from service http://sypexgeo.net
 
 ## Installation
 
-- [SypexGeo for Laravel 5.4+ on Packagist](https://packagist.org/packages/freezon/sypexgeo)
-- [SypexGeo for Laravel 5.4+ on GitHub](https://github.com/freezon/sypexgeo)
+- [SypexGeo for Laravel 5.5 on Packagist](https://packagist.org/packages/freezon/sypexgeo)
+- [SypexGeo for Laravel 5.5 on GitHub](https://github.com/freezon/sypexgeo)
 
 To get the latest version of SypexGeo simply require it in your `composer.json` file.
 
 ~~~
-"freezon/sypexgeo": "0.3.*@dev"
+"freezon/sypexgeo": "0.6.*@dev"
 ~~~
-
-You'll then need to run `composer install` to download it and have the autoloader updated.
-
-Once GeoIP is installed you need to register the service provider with the application. Open up `config/app.php` and find the `providers` key.
-
-~~~php
-'providers' => array(
-
-    'Freez0n\SypexGeo\SypexGeoServiceProvider',
-
-)
+OR
 ~~~
-
-GeoIP also ships with a facade which provides the static syntax for creating collections. You can register the facade in the `aliases` key of your `config/app.php` file.
-
-~~~php
-'aliases' => array(
-
-    'SypexGeo' => 'Freez0n\SypexGeo\SypexGeoFacade',
-
-)
+composer require freezon/sypexgeo:0.6.*@dev
 ~~~
 
 ### Publish the configurations
@@ -43,7 +25,7 @@ GeoIP also ships with a facade which provides the static syntax for creating col
 Run this on the command line from the root of your project:
 
 ~~~
-$ php artisan vendor:publish
+$ php artisan vendor:publish  --provider="Freez0n\SypexGeo\SypexGeoServiceProvider"
 ~~~
 
 A configuration file will be publish to `config/sypexgeo.php`
@@ -56,6 +38,16 @@ Getting the location data for a given IP:
 
 ```php
 $location = \SypexGeo::get('232.223.11.11');
+```
+
+OR 
+
+```php
+use Freez0n\SypexGeo\SypexGeo;
+
+...
+
+$location = SypexGeo::get('232.223.11.11');
 ```
 
 ### Example Data
@@ -101,7 +93,7 @@ If data is received from the webservice - config/sypexgeo.php
 ```php
         [
               "ip" => "77.37.136.11"
-              "city" => array:8 [
+              "city" => array [
                      "id" => 524901
                      "lat" => 55.75222
                      "lon" => 37.61556
@@ -111,7 +103,7 @@ If data is received from the webservice - config/sypexgeo.php
                      "vk" => 1
                      "population" => 10381222
                   ]
-              "region" => array:11 [
+              "region" => array [
                     "id" => 524894
                     "lat" => 55.76
                     "lon" => 37.61
@@ -124,7 +116,7 @@ If data is received from the webservice - config/sypexgeo.php
                     "vk" => 0
                     "utc" => 3
               ]
-              "country" => array:18 [
+              "country" => array [
                     "id" => 185
                     "iso" => "RU"
                     "continent" => "EU"
@@ -153,10 +145,6 @@ If data is received from the webservice - config/sypexgeo.php
 #### Default Location
 
 In the case that a location is not found the fallback location will be returned with the `default` parameter set to `true`. To set your own default change it in the configurations `config/geoip.php`
-
-## Services
-
-- **Database Service**: To use the database version of SypexGeo services download the `SxGeoCityMax.dat` from (vendor/scriptixru/sypexgeo/scr/Scriptixru/SypexGeo) and extract it to `/database/sypexgeo/`. And that's it.
 
 
 

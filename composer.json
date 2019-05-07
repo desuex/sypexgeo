@@ -17,14 +17,14 @@
     },
     "extra": {
         "branch-alias": {
-            "dev-master": "v0.5-dev"
+            "dev-master": "v0.6-dev"
         },
         "laravel": {
             "providers": [
                 "Freez0n\\SypexGeo\\SypexGeoServiceProvider"
             ],
             "aliases": {
-                "SypexGeo": "Freez0n\\SypexGeo\\SypexGeoFacade"
+                "SypexGeo": "Freez0n\\SypexGeo\\SypexGeo"
             }
         }
     }

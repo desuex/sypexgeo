@@ -1,4 +1,4 @@
-<?php namespace Freez0n\SypexGeo;
+<?php namespace Freez0n\SypexGeo\Sypex;
 
 /***************************************************************************\
  * | Sypex Geo                  version 2.2.3                                  |
@@ -31,6 +31,14 @@ class SxGeo {
     protected $db;
     protected $regions_db;
     protected $cities_db;
+
+    protected $b_idx_len;
+    protected $id_len;
+    protected $block_len;
+    protected $max_region;
+    protected $max_city;
+    protected $max_country;
+    protected $pack;
 
     public $id2iso = [
         '',
@@ -293,15 +301,22 @@ class SxGeo {
     public $batch_mode = false;
     public $memory_mode = false;
 
+    /**
+     * SxGeo constructor.
+     *
+     * @param string $db_file
+     * @param int    $type
+     * @throws \ErrorException
+     */
     public function __construct($db_file = 'SxGeoCityMax.dat', $type = SXGEO_FILE){
         $this->fh = fopen($db_file, 'rb');
         // Сначала убеждаемся, что есть файл базы данных
         $header = fread($this->fh, 40); // В версии 2.2 заголовок увеличился на 8 байт
         if(substr($header, 0, 3) != 'SxG')
-            die("Can't open {$db_file}\n");
+            throw new \ErrorException("Can't open {$db_file}\n");
         $info = unpack('Cver/Ntime/Ctype/Ccharset/Cb_idx_len/nm_idx_len/nrange/Ndb_items/Cid_len/nmax_region/nmax_city/Nregion_size/Ncity_size/nmax_country/Ncountry_size/npack_size', substr($header, 3));
         if($info['b_idx_len'] * $info['m_idx_len'] * $info['range'] * $info['db_items'] * $info['time'] * $info['id_len'] == 0)
-            die("Wrong file format {$db_file}\n");
+            throw new \ErrorException("Wrong file format {$db_file}\n");
         $this->range = $info['range'];
         $this->b_idx_len = $info['b_idx_len'];
         $this->m_idx_len = $info['m_idx_len'];
