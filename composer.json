@@ -3,12 +3,7 @@
     "description": "Supports GeoIP services (sypexgeo.net).",
     "keywords": ["laravel", "laravel 5.4", "geoip", "location", "geolocation"],
 	"license": "BSD-2-Clause",
-    "authors": [
-        {
-            "name": "Varchak Valery",
-            "email": "scriptixru@gmail.com"
-        }
-    ],
+    "authors": [],
     "require": {
         "php": ">=7.1.3"
     },
