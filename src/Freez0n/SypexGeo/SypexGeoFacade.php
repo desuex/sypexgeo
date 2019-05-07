@@ -1,4 +1,4 @@
-<?php namespace Scriptixru\SypexGeo;
+<?php namespace Freez0n\SypexGeo;
 
 use Illuminate\Support\Facades\Facade;
 
@@ -9,6 +9,8 @@ class SypexGeoFacade extends Facade {
      *
      * @return string
      */
-    protected static function getFacadeAccessor() { return 'sypexgeo'; }
+    protected static function getFacadeAccessor(){
+        return 'sypexgeo';
+    }
 
 }

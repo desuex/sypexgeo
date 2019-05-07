@@ -23,7 +23,7 @@ Once GeoIP is installed you need to register the service provider with the appli
 ~~~php
 'providers' => array(
 
-    'Scriptixru\SypexGeo\SypexGeoServiceProvider',
+    'Freez0n\SypexGeo\SypexGeoServiceProvider',
 
 )
 ~~~
@@ -33,7 +33,7 @@ GeoIP also ships with a facade which provides the static syntax for creating col
 ~~~php
 'aliases' => array(
 
-    'SypexGeo' => 'Scriptixru\SypexGeo\SypexGeoFacade',
+    'SypexGeo' => 'Freez0n\SypexGeo\SypexGeoFacade',
 
 )
 ~~~

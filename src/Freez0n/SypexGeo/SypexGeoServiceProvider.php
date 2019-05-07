@@ -1,4 +1,4 @@
-<?php namespace Scriptixru\SypexGeo;
+<?php namespace Freez0n\SypexGeo;
 
 use Illuminate\Support\ServiceProvider;
 
