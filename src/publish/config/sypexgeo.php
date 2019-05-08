@@ -26,8 +26,8 @@ return [
 
         'database' => [
             'driver' => 'file',
-            'path' => storage_path('sypexgeo/SxGeoMax.dat'),
-            'download' => 'https://sypexgeo.net/files/SxGeoMax.zip'
+            'path' => storage_path('sypexgeo/SxGeoCity.dat'),
+            'download' => 'https://sypexgeo.net/files/SxGeoCity_utf8.zip'
         ],
 
         'web_service' => [
