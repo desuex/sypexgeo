@@ -13,10 +13,6 @@ The data comes from a database and from service http://sypexgeo.net
 To get the latest version of SypexGeo simply require it in your `composer.json` file.
 
 ~~~
-"freezon/sypexgeo": "^0.7.1"
-~~~
-OR
-~~~
 $ composer require freezon/sypexgeo
 ~~~
 

@@ -12,7 +12,7 @@ return [
     |
     */
 
-    'type' => 'database',
+    'type' => env('SYPEXGEO_TYPE','database'),
 
     /*
     |--------------------------------------------------------------------------
@@ -27,7 +27,7 @@ return [
         'database' => [
             'driver' => 'file',
             'path' => storage_path('sypexgeo/SxGeoCity.dat'),
-            'download' => 'https://sypexgeo.net/files/SxGeoCity_utf8.zip'
+            'download' => 'https://sypexgeo.net/files/SxGeoCityMax_utf8.zip'
         ],
 
         'web_service' => [
