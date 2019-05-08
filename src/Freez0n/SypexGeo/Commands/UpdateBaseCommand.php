@@ -9,7 +9,7 @@ class UpdateBaseCommand extends Command
      *
      * @var string
      */
-    protected $signature = 'sypexgeo:update {--Q|quiet}';
+    protected $signature = 'sypexgeo:update';
 
     /**
      * The console command description.
