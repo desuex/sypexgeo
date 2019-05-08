@@ -1,5 +1,7 @@
 <?php namespace Freez0n\SypexGeo;
 
+use Freez0n\SypexGeo\Commands\UpdateBaseCommand;
+use Illuminate\Contracts\Config\Repository;
 use Illuminate\Support\ServiceProvider;
 use Freez0n\SypexGeo\Sypex\SxGeo;
 use Freez0n\SypexGeo\Sypex\SxGeoHttp;
@@ -22,9 +24,14 @@ class SypexGeoServiceProvider extends ServiceProvider {
     public function boot(){
         $dir = __DIR__ . '/../../publish/';
         $this->publishes([
-            $dir . 'config/sypexgeo.php'             => config_path('sypexgeo.php'),
-            $dir . 'database/sypexgeo/SxGeoCity.dat' => database_path('sypexgeo/SxGeoCity.dat'),
+            $dir . 'config/sypexgeo.php' => config_path('sypexgeo.php'),
+            $dir . 'storage/.gitignore'   => storage_path('sypexgeo/.gitignore'),
         ]);
+        if($this->app->runningInConsole()){
+            $this->commands([
+                UpdateBaseCommand::class
+            ]);
+        }
     }
 
     /**
@@ -35,22 +42,25 @@ class SypexGeoServiceProvider extends ServiceProvider {
     public function register(){
         // Register providers.
         $this->app->singleton('sypexgeo', function($app){
-            $sypexConfig = $app['config'];
-            $sypexConfigType = $sypexConfig->get('sypexgeo.sypexgeo.type', []);
-            $sypexConfigPath = $sypexConfig->get('sypexgeo.sypexgeo.path', []);
+            /** @var Repository $config */
+            $config = $app['config'];
+            $type = $config->get('sypexgeo.type', 'file');
 
-            switch($sypexConfigType){
-                case 'web_service':
-                    $license_key = $sypexConfig->get('sypexgeo.sypexgeo.license_key', []);
-                    $sxgeo = new SxGeoHttp($license_key);
+            $settings = $config->get('sypexgeo.types.' . $type);
+
+            switch(array_get($settings, 'driver', 'file')){
+                case 'api':
+                    $license_key = array_get($settings, 'license_key', '');
+                    $instance = new SxGeoHttp($license_key);
                     break;
                 default:
-                    $sypexConfigFile = $sypexConfig->get('sypexgeo.sypexgeo.file', []);
-                    $sxgeo = new SxGeo(base_path($sypexConfigPath . $sypexConfigFile));
+                case 'file':
+                    $path = array_get($settings, 'path');
+                    $instance = new SxGeo($path);
                     break;
             }
 
-            return new SypexGeo($sxgeo, $app['config']);
+            return new SypexGeo($instance, $config);
         });
     }
 

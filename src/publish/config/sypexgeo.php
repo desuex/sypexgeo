@@ -4,25 +4,41 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Services settings
+    | Access type
+    |--------------------------------------------------------------------------
+    |
+    | By default exists `database` and `web_service`, but you may add something
+    | else.
+    |
+    */
+
+    'type' => 'database',
+
+    /*
+    |--------------------------------------------------------------------------
+    | All access type settings
     |--------------------------------------------------------------------------
     |
     | Service specific settings.
     |
     */
+    'types'       => [
 
-    'sypexgeo' => [
-        'type'        => 'database',
-        // database or web_service
-        'path'        => '/database/sypexgeo/',
-        // database path (works only with 'type' => 'database')
-        'file'        => 'SxGeoCity.dat',
-        // database file (works only with 'type' => 'database')
-        'license_key' => '',
-        //license key sypexgeo.net (works only with 'type' => 'web_service')
-        'view'        => 'json'
-        //json or xml -- json return array scalar types and string --xml return array only string types (works only with 'type' => 'web_service')
+        'database' => [
+            'driver' => 'file',
+            'path' => storage_path('sypexgeo/SxGeoMax.dat'),
+            'download' => 'https://sypexgeo.net/files/SxGeoMax.zip'
+        ],
 
+        'web_service' => [
+            'driver' => 'api',
+
+            //license key sypexgeo.net
+            'license_key' => env('SYPEXGEO_KEY', ''),
+
+            //json or xml
+            'view'        => 'json'
+        ]
     ],
 
     /*
@@ -30,7 +46,7 @@ return [
     | Default Location
     |--------------------------------------------------------------------------
     |
-    | Return when a location is not found.
+    | Return when a location is not found or ip not valid.
     |
     */
 
