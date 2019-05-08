@@ -117,9 +117,9 @@ class SypexGeo {
         return [
             'city' => $location['city']['name_'.$lang],
             'city_id' => $location['city']['id'],
-            'region' => $location['region']['region_'.$lang],
+            'region' => $location['region']['name_'.$lang],
             'region_id' => $location['region']['id'],
-            'country' => $location['region']['name_'.$lang],
+            'country' => $location['country']['name_'.$lang],
             'country_id' => $location['country']['id'],
             'ico' => $location['region']['ico'],
             'timezone' => $location['region']['timezone'],
