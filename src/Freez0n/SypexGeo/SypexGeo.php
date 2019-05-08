@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Facade;
  * @method static array getCity(string $ip = '')
  * @method static array getRegion(string $ip = '')
  * @method static array getCountry(string $ip = '')
+ * @method static array getLocationNames(string $ip = '', string $lang = 'ru')
  */
 class SypexGeo extends Facade {
 
