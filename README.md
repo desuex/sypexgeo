@@ -13,11 +13,11 @@ The data comes from a database and from service http://sypexgeo.net
 To get the latest version of SypexGeo simply require it in your `composer.json` file.
 
 ~~~
-"freezon/sypexgeo": "0.7"
+"freezon/sypexgeo": "^0.7.1"
 ~~~
 OR
 ~~~
-$ composer require freezon/sypexgeo:0.7
+$ composer require freezon/sypexgeo
 ~~~
 
 ### Publish the configurations
@@ -56,6 +56,9 @@ $location = SypexGeo::get();
 $city = SypexGeo::getCity([$ip = '']);
 $city = SypexGeo::getRegion([$ip = '']);
 $city = SypexGeo::getCountry([$ip = '']);
+
+//for get names only
+$city = SypexGeo::getLocationNames([$ip = ''], [$lang = 'ru' or 'en']);
 ```
 
 ### Example Data
