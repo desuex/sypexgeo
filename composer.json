@@ -16,9 +16,6 @@
         }
     },
     "extra": {
-        "branch-alias": {
-            "dev-master": "v0.6-dev"
-        },
         "laravel": {
             "providers": [
                 "Freez0n\\SypexGeo\\SypexGeoServiceProvider"

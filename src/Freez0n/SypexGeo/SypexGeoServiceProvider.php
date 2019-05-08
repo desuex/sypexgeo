@@ -22,7 +22,7 @@ class SypexGeoServiceProvider extends ServiceProvider {
     public function boot(){
         $dir = __DIR__ . '/../../publish/';
         $this->publishes([
-            $dir . 'config/sypexgeo.php' => config_path('sypexgeo.php'),
+            $dir . 'config/sypexgeo.php'             => config_path('sypexgeo.php'),
             $dir . 'database/sypexgeo/SxGeoCity.dat' => database_path('sypexgeo/SxGeoCity.dat'),
         ]);
     }
@@ -40,17 +40,14 @@ class SypexGeoServiceProvider extends ServiceProvider {
             $sypexConfigPath = $sypexConfig->get('sypexgeo.sypexgeo.path', []);
 
             switch($sypexConfigType){
-                case ('database'):
-                    $sypexConfigFile = $sypexConfig->get('sypexgeo.sypexgeo.file', []);
-                    $sxgeo = new SxGeo(base_path() . $sypexConfigPath . $sypexConfigFile);
-                    break;
-                case ('web_service'):
+                case 'web_service':
                     $license_key = $sypexConfig->get('sypexgeo.sypexgeo.license_key', []);
                     $sxgeo = new SxGeoHttp($license_key);
                     break;
                 default:
                     $sypexConfigFile = $sypexConfig->get('sypexgeo.sypexgeo.file', []);
-                    $sxgeo = new SxGeo(base_path() . $sypexConfigPath . $sypexConfigFile);
+                    $sxgeo = new SxGeo(base_path($sypexConfigPath . $sypexConfigFile));
+                    break;
             }
 
             return new SypexGeo($sxgeo, $app['config']);

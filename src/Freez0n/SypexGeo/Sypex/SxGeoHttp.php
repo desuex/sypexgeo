@@ -2,7 +2,9 @@
 
 namespace Freez0n\SypexGeo\Sypex;
 
-class SxGeoHttp {
+use Freez0n\SypexGeo\Contracts\SypexGeoContract;
+
+class SxGeoHttp  implements SypexGeoContract {
 
     /**
      * @var string license key sypexgeo.net

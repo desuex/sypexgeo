@@ -1,5 +1,7 @@
 <?php namespace Freez0n\SypexGeo\Sypex;
 
+use Freez0n\SypexGeo\Contracts\SypexGeoContract;
+
 /***************************************************************************\
  * | Sypex Geo                  version 2.2.3                                  |
  * | (c)2006-2014 zapimir       zapimir@zapimir.net       http://sypex.net/    |
@@ -15,7 +17,7 @@ define('SXGEO_FILE', 0);
 define('SXGEO_MEMORY', 1);
 define('SXGEO_BATCH', 2);
 
-class SxGeo {
+class SxGeo implements SypexGeoContract {
     protected $fh;
     protected $ip1c;
     protected $info;
@@ -606,7 +608,7 @@ class SxGeo {
         return $seek ? $this->parseCity($seek) : false;
     }
 
-    public function getCityFull($ip){
+    public function getCityFull($ip, $config){
         $seek = $this->get_num($ip);
 
         return $seek ? $this->parseCity($seek, 1) : false;

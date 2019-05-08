@@ -1,15 +1,11 @@
 <?php namespace Freez0n\SypexGeo\Geo;
 
-use Monolog\Logger;
-use Monolog\Handler\StreamHandler;
-
+use Freez0n\SypexGeo\Contracts\SypexGeoContract;
 use Illuminate\Config\Repository;
-use Illuminate\Session\Store as SessionStore;
-use PhpParser\Node\Expr\Cast\Object_;
 
 class SypexGeo {
     /**
-     * @var \SxGeo instance.
+     * @var SypexGeoContract
      */
     private $_sypex = null;
 
@@ -42,45 +38,10 @@ class SypexGeo {
     public $country = [];
 
     /**
-     * Get full geo info by remote IP-address
-     *
-     * @param string $ip source ip, if empty then determine
-     * @return array geo info|false if error
-     *                   result array example:
-     *                   ```php
-     *                   [
-     *                   'city' => [
-     *                   'id' => 709717,
-     *                   'lat' => 48.023000000000003,
-     *                   'lon' => 37.802239999999998,
-     *                   'name_ru' => 'Донецк',
-     *                   'name_en' => 'Donets\'k',
-     *                   'okato' => '14101',
-     *                   ],
-     *                   'region' => [
-     *                   'id' => 709716,
-     *                   'lat' => 48,
-     *                   'lon' => 37.5,
-     *                   'name_ru' => 'Донецкая область',
-     *                   'name_en' => 'Donets\'ka Oblast\'',
-     *                   'iso' => 'UA-14',
-     *                   'timezone' => 'Europe/Zaporozhye',
-     *                   'okato' => '14',
-     *                   ],
-     *                   'country' => [
-     *                   'id' => 222,
-     *                   'iso' => 'UA',
-     *                   'continent' => 'EU',
-     *                   'lat' => 49,
-     *                   'lon' => 32,
-     *                   'name_ru' => 'Украина',
-     *                   'name_en' => 'Ukraine',
-     *                   'timezone' => 'Europe/Kiev',
-     *                   ],
-     *                   ]
-     *                   ```
+     * @param SypexGeoContract $object
+     * @param Repository
      */
-    public function __construct($object, Repository $config){
+    public function __construct($object, $config){
         $this->config = $config;
         $this->_sypex = $object;
     }
@@ -131,6 +92,18 @@ class SypexGeo {
         $this->ipAsLong = sprintf('%u', ip2long($ip));
 
         return $ip;
+    }
+
+    public function getCity($ip = ''){
+        return $this->get($ip)['city'];
+    }
+
+    public function getRegion($ip = ''){
+        return $this->get($ip)['region'];
+    }
+
+    public function getCountry($ip = ''){
+        return $this->get($ip)['country'];
     }
 
 }
