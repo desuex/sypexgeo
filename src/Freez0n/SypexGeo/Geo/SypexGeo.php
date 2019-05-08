@@ -121,7 +121,7 @@ class SypexGeo {
             'region_id' => $location['region']['id'],
             'country' => $location['country']['name_'.$lang],
             'country_id' => $location['country']['id'],
-            'ico' => $location['region']['ico'],
+            'iso' => $location['region']['iso'],
             'timezone' => $location['region']['timezone'],
         ];
     }
