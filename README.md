@@ -1,4 +1,4 @@
-# GeoIP for Laravel 5.4+
+# GeoIP for Laravel 5.5 with auto discover
 
 ----------
 
@@ -13,11 +13,11 @@ The data comes from a database and from service http://sypexgeo.net
 To get the latest version of SypexGeo simply require it in your `composer.json` file.
 
 ~~~
-"freezon/sypexgeo": "0.6.*@dev"
+"freezon/sypexgeo": "0.7"
 ~~~
 OR
 ~~~
-$ composer require freezon/sypexgeo:0.6.*@dev
+$ composer require freezon/sypexgeo:0.7
 ~~~
 
 ### Publish the configurations
@@ -48,6 +48,14 @@ use Freez0n\SypexGeo\SypexGeo;
 ...
 
 $location = SypexGeo::get('232.223.11.11');
+
+// empty get for get info by user ip
+$location = SypexGeo::get();
+
+// for get city, region or country
+$city = SypexGeo::getCity([$ip = '']);
+$city = SypexGeo::getRegion([$ip = '']);
+$city = SypexGeo::getCountry([$ip = '']);
 ```
 
 ### Example Data
