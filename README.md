@@ -1,4 +1,4 @@
-# GeoIP for Laravel 5.6+, 6.* with auto discover
+# GeoIP for Laravel 6+ with auto discover
 
 ----------
 
@@ -7,13 +7,18 @@ The data comes from a database and from service http://sypexgeo.net
 
 ## Installation
 
-- [SypexGeo for Laravel 5.6 on Packagist](https://packagist.org/packages/freezon/sypexgeo)
-- [SypexGeo for Laravel 5.6 on GitHub](https://github.com/freezon/sypexgeo)
+- [SypexGeo for Laravel 6+ on Packagist](https://packagist.org/packages/freezon/sypexgeo)
+- [SypexGeo for Laravel 6+ on GitHub](https://github.com/freezon/sypexgeo)
 
 To get the latest version of SypexGeo simply require it in your `composer.json` file.
 
 ~~~
 $ composer require freezon/sypexgeo
+~~~
+
+for Laravel 5.5+
+~~~
+$ composer require freezon/sypexgeo:0.8.7
 ~~~
 
 ### Publish the configurations
