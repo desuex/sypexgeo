@@ -1,6 +1,7 @@
 <?php namespace Freez0n\SypexGeo\Commands;
 
 use Illuminate\Console\Command;
+use Illuminate\Support\Arr;
 
 class UpdateBaseCommand extends Command {
     /**
@@ -41,20 +42,20 @@ class UpdateBaseCommand extends Command {
 
             return;
         }
-        $driver = array_get($settings, 'driver');
+        $driver = Arr::get($settings, 'driver');
         if($driver !== 'file'){
             $this->info('Sypexgeo type not `database`, see file `config/sypexgeo.php`');
 
             return;
         }
-        $url = array_get($settings, 'download');
+        $url = Arr::get($settings, 'download');
         if(is_null($url)){
             $this->error("Bad settings: set `sypexgeo.types.$type.download` before run command!");
 
             return;
         }
 
-        $full_path = array_get($settings, 'path');
+        $full_path = Arr::get($settings, 'path');
         $dat_file_dir = dirname($full_path);
 
         $last_updated_file = $dat_file_dir . '/SxGeo.upd';

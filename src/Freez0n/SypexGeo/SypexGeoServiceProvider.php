@@ -6,6 +6,7 @@ use Illuminate\Support\ServiceProvider;
 use Freez0n\SypexGeo\Sypex\SxGeo;
 use Freez0n\SypexGeo\Sypex\SxGeoHttp;
 use Freez0n\SypexGeo\Geo\SypexGeo;
+use Illuminate\Support\Arr;
 
 class SypexGeoServiceProvider extends ServiceProvider {
 
@@ -48,14 +49,14 @@ class SypexGeoServiceProvider extends ServiceProvider {
 
             $settings = $config->get('sypexgeo.types.' . $type);
 
-            switch(array_get($settings, 'driver', 'file')){
+            switch(Arr::get($settings, 'driver', 'file')){
                 case 'api':
-                    $license_key = array_get($settings, 'license_key', '');
+                    $license_key = Arr::get($settings, 'license_key', '');
                     $instance = new SxGeoHttp($license_key);
                     break;
                 default:
                 case 'file':
-                    $path = array_get($settings, 'path');
+                    $path = Arr::get($settings, 'path');
                     $instance = new SxGeo($path);
                     break;
             }

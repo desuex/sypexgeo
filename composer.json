@@ -1,12 +1,12 @@
 {
     "name": "freezon/sypexgeo",
     "description": "Supports GeoIP services (sypexgeo.net).",
-    "keywords": ["laravel", "laravel 5", "laravel 5.5", "geoip", "location", "geolocation"],
+    "keywords": ["laravel", "laravel 6+", "geoip", "location", "geolocation"],
 	"license": "BSD-2-Clause",
     "authors": [],
     "require": {
-        "php": ">=7.1.3",
-        "laravel/framework": "^5.6 || 6.* || 7.* || 8.*",
+        "php": ">=7.2",
+        "laravel/framework": "6.* || 7.*",
         "ext-curl": "*",
         "ext-json": "*",
         "ext-simplexml": "*"
