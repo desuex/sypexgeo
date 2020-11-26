@@ -7,7 +7,7 @@ use Freez0n\SypexGeo\Contracts\SypexGeoContract;
  * | (c)2006-2014 zapimir       zapimir@zapimir.net       http://sypex.net/    |
  * | (c)2006-2014 BINOVATOR     info@sypex.net                                 |
  * |---------------------------------------------------------------------------|
- * |     created: 2006.10.17 18:33              modified: 2014.06.20 18:57     |
+ * |     created: 2006.10.17 18:33              modified: 2020.11.26 07:44     |
  * |---------------------------------------------------------------------------|
  * | Sypex Geo is released under the terms of the BSD license                  |
  * |   http://sypex.net/bsd_license.txt                                        |
@@ -496,7 +496,7 @@ class SxGeo implements SypexGeoContract {
         $pos = 0;
         foreach($pack AS $p){
             list($type, $name) = explode(':', $p);
-            $type0 = $type{0};
+            $type0 = $type[0];
             if($empty){
                 $unpacked[$name] = $type0 == 'b' || $type0 == 'c' ? '' : 0;
                 continue;
@@ -542,7 +542,7 @@ class SxGeo implements SypexGeoContract {
                     $v = unpack('S', $val);
                     break;
                 case 'm':
-                    $v = unpack('l', $val . (ord($val{2}) >> 7 ? "\xff" : "\0"));
+                    $v = unpack('l', $val . (ord($val[2]) >> 7 ? "\xff" : "\0"));
                     break;
                 case 'M':
                     $v = unpack('L', $val . "\0");
@@ -561,10 +561,10 @@ class SxGeo implements SypexGeoContract {
                     break;
 
                 case 'n':
-                    $v = current(unpack('s', $val)) / pow(10, $type{1});
+                    $v = current(unpack('s', $val)) / pow(10, $type[1]);
                     break;
                 case 'N':
-                    $v = current(unpack('l', $val)) / pow(10, $type{1});
+                    $v = current(unpack('l', $val)) / pow(10, $type[1]);
                     break;
 
                 case 'c':
